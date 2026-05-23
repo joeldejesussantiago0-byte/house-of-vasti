@@ -1,0 +1,169 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+
+  --color-ink: #060a09;
+  --color-obsidian: #0a100e;
+  --color-emerald-950: #021612;
+  --color-emerald-900: #042e24;
+  --color-emerald-800: #064535;
+  --color-emerald-700: #0a5e4a;
+  --color-emerald-600: #0f7a61;
+  --color-emerald-500: #14a077;
+  --color-ivory: #f7f3ea;
+  --color-champagne: #e8dcc4;
+  --color-cream: #c9bfaa;
+  --color-gold-200: #f2e6c8;
+  --color-gold-300: #dfc890;
+  --color-gold-400: #c9a962;
+  --color-gold-500: #b8923f;
+  --color-gold-600: #96752e;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply m-0 min-h-screen overflow-x-hidden font-body text-ivory/85 antialiased;
+    background-color: var(--color-ink);
+    background-image:
+      radial-gradient(
+        ellipse 90% 60% at 50% -15%,
+        rgba(15, 122, 97, 0.22) 0%,
+        transparent 55%
+      ),
+      radial-gradient(
+        ellipse 50% 40% at 100% 20%,
+        rgba(201, 169, 98, 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse 45% 35% at 0% 80%,
+        rgba(6, 69, 53, 0.35) 0%,
+        transparent 50%
+      ),
+      linear-gradient(
+        175deg,
+        #021612 0%,
+        #042e24 35%,
+        #0a100e 65%,
+        #060a09 100%
+      );
+    background-attachment: fixed;
+  }
+
+  #root {
+    @apply relative w-full min-h-screen;
+  }
+
+  ::selection {
+    background: rgba(201, 169, 98, 0.35);
+    color: var(--color-ivory);
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply border border-gold-400/15 bg-emerald-900/30 shadow-[0_8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl;
+  }
+
+  .glass-strong {
+    @apply border border-gold-400/25 bg-emerald-900/45 shadow-[0_16px_48px_rgba(0,0,0,0.55)] backdrop-blur-2xl;
+  }
+
+  .glass-dark {
+    @apply border border-gold-400/10 bg-ink/80 shadow-2xl backdrop-blur-2xl;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-300 via-gold-400 to-gold-500 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-emerald {
+    @apply bg-gradient-to-r from-emerald-500 via-emerald-400 to-gold-400 bg-clip-text text-transparent;
+  }
+
+  .glow-luxury {
+    box-shadow:
+      0 0 60px rgba(15, 122, 97, 0.25),
+      0 0 30px rgba(201, 169, 98, 0.1),
+      0 25px 50px -12px rgba(0, 0, 0, 0.55);
+  }
+
+  .glow-gold {
+    box-shadow:
+      0 0 40px rgba(201, 169, 98, 0.2),
+      0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .btn-gold {
+    @apply relative overflow-hidden rounded-full bg-gradient-to-r from-gold-600 via-gold-400 to-gold-500 bg-[length:200%_100%] font-medium text-ink shadow-lg shadow-gold-500/25 transition-all duration-500 hover:bg-right hover:shadow-gold-400/35;
+  }
+
+  .btn-outline {
+    @apply rounded-full border border-gold-400/30 bg-emerald-900/20 font-medium text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold-400/60 hover:bg-emerald-800/40 hover:shadow-[0_0_24px_rgba(201,169,98,0.12)];
+  }
+
+  .card-luxury {
+    @apply rounded-3xl border border-gold-400/15 bg-emerald-900/30 shadow-[0_8px_32px_rgba(0,0,0,0.45)] backdrop-blur-xl transition-all duration-500;
+  }
+
+  .card-luxury:hover {
+    @apply border-gold-400/35;
+    box-shadow:
+      0 12px 40px rgba(0, 0, 0, 0.5),
+      0 0 30px rgba(15, 122, 97, 0.15);
+  }
+
+  .card-featured {
+    @apply rounded-3xl border border-gold-400/40 bg-gradient-to-b from-emerald-800/50 via-emerald-900/60 to-ink/80 shadow-xl shadow-gold-500/10;
+  }
+
+  .section-padding {
+    @apply relative px-5 py-20 sm:px-8 lg:px-12 lg:py-28;
+  }
+
+  .section-glow::before {
+    content: '';
+    @apply pointer-events-none absolute inset-0 opacity-60;
+    background: radial-gradient(
+      ellipse 70% 50% at 50% 0%,
+      rgba(15, 122, 97, 0.12) 0%,
+      transparent 70%
+    );
+  }
+
+  .ambient-orb-emerald {
+    @apply rounded-full bg-emerald-600/25 blur-3xl;
+  }
+
+  .ambient-orb-gold {
+    @apply rounded-full bg-gold-400/15 blur-3xl;
+  }
+
+  .divider-gold {
+    @apply h-px bg-gradient-to-r from-transparent via-gold-400/60 to-transparent;
+  }
+
+  .focus-ring {
+    @apply focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-ink focus-visible:outline-none;
+  }
+}
